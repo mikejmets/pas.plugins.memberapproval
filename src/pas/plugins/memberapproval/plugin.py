@@ -67,7 +67,8 @@ class MemberapprovalPlugin(UserManager):
         portal = purl.getPortalObject()
         if self.userStatus(user_id) is not True:
             self._activated_userid[user_id] = True
-            notify(UserApprovedEvent(portal, user_id))
+        #Notify anyway because member has already supplied a password
+        notify(UserApprovedEvent(portal, user_id))
 
     security.declarePrivate( 'disapproveUser' )
     def disapproveUser(self, user_id):
